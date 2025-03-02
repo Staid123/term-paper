@@ -1,0 +1,8 @@
+fastapi==0.115.8
+sqlalchemy==2.0.38
+asyncpg==0.30.0
+alembic==1.14.1
+black==25.1.0
+pydantic_settings==2.7.1
+uvicorn==0.34.0
+boto3==1.36.26

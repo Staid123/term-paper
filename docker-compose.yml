@@ -1,0 +1,35 @@
+services:
+  testing_service:
+    container_name: testing_service
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    command: >
+       sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8080 --reload --reload-dir /app"    
+    env_file:
+      - .env
+    volumes:
+      - ./alembic:/app/alembic  
+      - ./alembic.ini:/app/alembic.ini
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 5
+
+
+  database:
+      image: postgres:latest
+      container_name: database
+      env_file:
+        - .env
+      ports:
+        - "65401:5432"
+      volumes:
+        - postgres_database:/var/lib/postgresql/data/
+
+        
+volumes:
+  postgres_database:
