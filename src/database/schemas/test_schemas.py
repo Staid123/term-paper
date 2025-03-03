@@ -27,3 +27,4 @@ class TestCreateSchema(TestBaseSchema):
 
 class TestUpdateSchema(TestBaseSchema):
     title: Optional[str] = None
+    description: Optional[str] = None

@@ -35,10 +35,9 @@ class S3Client:
         
     @staticmethod
     async def delete_file(
-        self,
         key: str,
     ) -> None:
-        response = self.bucket.delete_objects(
+        response = S3Client.bucket.delete_objects(
             Delete={
                 'Objects': [
                     {

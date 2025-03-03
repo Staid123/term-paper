@@ -17,11 +17,12 @@ class QuestionSchema(QuestionBaseSchema):
     id: int
     created_at: datetime
     updated_at: datetime
-    answers: List["AnswerSchema"]
+    answers: List["AnswerSchema"] = None
+    test_id: int
 
 
 class QuestionCreateSchema(QuestionBaseSchema):
-    pass
+    test_id: int
 
 
 class QuestionUpdateSchema(QuestionBaseSchema):
